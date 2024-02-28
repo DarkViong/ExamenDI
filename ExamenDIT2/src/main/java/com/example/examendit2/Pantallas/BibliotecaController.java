@@ -16,7 +16,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
-
+/**
+ * Controlador para la interfaz de la biblioteca.
+ */
 public class BibliotecaController{
 
     @FXML
@@ -40,11 +42,17 @@ public class BibliotecaController{
     private TableColumn<Libro, String> idTitulo;
 
     private final ObservableList<Libro> libros = FXCollections.observableArrayList();
-
+    /**
+     * Obtiene la lista observable de libros.
+     *
+     * @return La lista observable de libros.
+     */
     public ObservableList<Libro> getDispositivos() {
         return libros;
     }
-
+    /**
+     * Inicializa la interfaz de la biblioteca.
+     */
     @FXML
     public void initialize() {
         // vincular la lista a la tabla
@@ -70,7 +78,11 @@ public class BibliotecaController{
             }
         });
     }
-
+    /**
+     * Maneja el evento de añadir libros.
+     *
+     * @param event El evento de añadir libros.
+     */
     @FXML
     public void añadirLibros(ActionEvent event) {
         // Llamar a la ventana de añadir dispositivo

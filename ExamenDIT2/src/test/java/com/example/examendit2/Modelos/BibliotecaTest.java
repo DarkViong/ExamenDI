@@ -6,27 +6,39 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Clase de prueba para la clase Biblioteca.
+ */
 public class BibliotecaTest {
 
     private Biblioteca biblioteca;
 
+    /**
+     * Configuración inicial antes de cada prueba.
+     */
     @BeforeEach
     public void setUp() {
         biblioteca = new Biblioteca();
     }
 
+    /**
+     * Prueba la función de prestar un libro que no existe en la biblioteca.
+     */
     @Test
     public void testPrestarLibroNoExistente() {
         assertFalse(biblioteca.prestar(1, "123456789")); // Suponiendo que no existe el libro con Id 1
     }
-
+    /**
+     * Prueba la función de prestar a un usuario que no existe en la biblioteca.
+     */
     @Test
     public void testPrestarUsuarioNoExistente() {
         biblioteca.altaLibro(1, "Libro Ejemplo", "ISBN123", "Autor Ejemplo", "Novela", LocalDate.parse("2022-01-01"));
         assertFalse(biblioteca.prestar(1, "123456789")); // Suponiendo que no existe el usuario con Dni "123456789"
     }
-
+    /**
+     * Prueba la función de prestar un libro a un usuario existente en la biblioteca.
+     */
     @Test
     public void testPrestarLibroYUsuarioExistentes() {
         biblioteca.altaLibro(1, "Libro Ejemplo", "ISBN123", "Autor Ejemplo", "Novela", LocalDate.parse("2022-01-01"));
@@ -39,6 +51,9 @@ public class BibliotecaTest {
         assertFalse(biblioteca.prestar(3, "123456789")); // Usuario sancionado
     }
 
+    /**
+     * Prueba la función de prestar un libro a un usuario existente en la biblioteca.
+     */
     @Test
     public void testDevolverEnFecha() {
         biblioteca.altaLibro(1, "Libro Ejemplo", "ISBN123", "Autor Ejemplo", "Novela", LocalDate.parse("2022-02-26"));
@@ -47,7 +62,10 @@ public class BibliotecaTest {
 
         assertTrue(biblioteca.devolver(1, "123456789")); // Devolver en fecha
     }
-/*
+
+    /**
+     * Prueba la función de devolver un libro fuera de fecha.
+     */
     @Test
     public void testDevolverFueraDeFecha() {
         biblioteca.altaLibro(1, "Libro Ejemplo", "ISBN123", "Autor Ejemplo", "Novela", LocalDate.parse("2022-01-01"));
@@ -67,8 +85,10 @@ public class BibliotecaTest {
             // Manejar el caso cuando el préstamo no se encuentra
             fail("El préstamo no se encontró.");
         }
-    }*/
-
+    }
+    /**
+     * Prueba la función de alta de libro, asegurando que atributos únicos no se repitan.
+     */
     @Test
     public void testAltaLibroAtributosUnicosNoRepetidos() {
         assertTrue(biblioteca.altaLibro(1, "Libro Ejemplo", "ISBN123", "Autor Ejemplo", "Novela", LocalDate.parse("2022-01-01"))); // Primer alta exitosa

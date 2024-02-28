@@ -11,7 +11,9 @@ import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-
+/**
+ * Controlador para la interfaz de añadir/modificar libro.
+ */
 public class LibroController {
 
     private Libro libro;
@@ -29,7 +31,11 @@ public class LibroController {
     @FXML
     private TextField tematicaText;
 
-
+    /**
+     * Maneja el evento del botón de cancelar.
+     *
+     * @param event El evento de clic en el botón de cancelar.
+     */
     @FXML
     void CancelButton(ActionEvent event) {
         // limpiar campos
@@ -44,7 +50,11 @@ public class LibroController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-
+    /**
+     * Maneja el evento del botón de confirmar.
+     *
+     * @param event El evento de clic en el botón de confirmar.
+     */
     @FXML
     void handleOkButton(ActionEvent event) {
         // obtener datos de los campos
@@ -88,6 +98,11 @@ public class LibroController {
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * Obtiene el libro creado o modificado.
+     *
+     * @return El libro creado o modificado.
+     */
     public Libro getLibro() {
         System.out.println(libro);
         return libro;
